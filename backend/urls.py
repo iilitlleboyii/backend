@@ -21,6 +21,7 @@ from user import views as user_views
 
 router = routers.DefaultRouter()
 router.register('user', user_views.UserViewSet)
+router.register('role', user_views.RoleViewSet)
 
 urlpatterns = [
     #    path('admin/', admin.site.urls),

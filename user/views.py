@@ -1,6 +1,6 @@
-from .models import User
-from .filtersets import UserFilterSet
-from .serializers import CustomTokenObtainPairSerializer, UserSerializer, UserAuthSerializer, UserProfileSerializer
+from .models import User, Role
+from .filtersets import UserFilterSet, RoleFilterSet
+from .serializers import CustomTokenObtainPairSerializer, UserSerializer, UserAuthSerializer, UserProfileSerializer, RoleSerializer
 
 from django.contrib.auth.hashers import make_password
 
@@ -77,3 +77,14 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     filterset_class = UserFilterSet
     ordering_fields = ['id', 'date_joined', 'last_login']
+
+
+class RoleViewSet(ModelViewSet):
+    """
+    角色表
+    """
+
+    queryset = Role.objects.all().order_by('id')
+    serializer_class = RoleSerializer
+    filterset_class = RoleFilterSet
+    ordering_fields = ['id', 'created_time', 'updated_time']

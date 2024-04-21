@@ -1,11 +1,11 @@
 # from django.contrib.auth import get_user_model
-from .models import User
+from .models import User, Role
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import update_last_login
 from rest_framework.serializers import ModelSerializer
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.settings import api_settings
-from rest_framework import exceptions, status
+from rest_framework import exceptions
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -107,3 +107,13 @@ class UserSerializer(ModelSerializer):
             'groups',
             'user_permissions',
         )
+
+
+class RoleSerializer(ModelSerializer):
+    """
+    角色表
+    """
+
+    class Meta:
+        model = Role
+        fields = '__all__'
